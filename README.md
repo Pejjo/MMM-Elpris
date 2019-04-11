@@ -1,6 +1,6 @@
 # MMM-Flo
 
-This is a module for [Magic Mirror²](https://github.com/MichMich/MagicMirror) that will collect data from Kartverket in Norway and sisplay a tide table.
+This is a module for [Magic Mirror²](https://github.com/MichMich/MagicMirror) that will collect data from Kartverket in Norway and display a tide table.
 
 The module can be configured to show several days and a spesific location.
 
