@@ -18,8 +18,8 @@ Module.register("MMM-Flo",{
 		animationSpeed: 1000,
 		refreshInterval: 5 * 60 * 1000, // every 5 minutes
 		daysSpan:2,
-		lat:60.260283,
-		lon:5.321504,
+		lat:60.260000,
+		lon:5.320000,
 		datatype:"tab", //all, obs, pre, tab
 		//httpRequestURL:"http://api.sehavniva.no/tideapi.php?lat="+this.config.lat+"&lon="+this.config.lon+"&fromtime=2019-04-10T00%3A00"+
 		//"&totime=2019-04-11T00%3A00&datatype="+this.config.datatype+"&refcode=cd&place=&file=&lang=en&interval=10&dst=0&tzone=1&tide_request=locationdata",
