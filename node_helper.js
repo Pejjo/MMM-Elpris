@@ -34,7 +34,7 @@ module.exports = NodeHelper.create({
 		var monthFuture = dateFuture.split("-")[1];
 		var dayFuture = dateFuture.split("-")[2];
 
-		console.log("NEW DATE LOADED:"+dateNow);
+		//console.log("NEW DATE LOADED:"+dateNow);
 		var myUrl = "http://api.sehavniva.no/tideapi.php?lat="+this.config.lat+"&lon="+this.config.lon+"&fromtime="+yearNow+"-"+monthNow+"-"+dayNow+"T00%3A00"+
 		"&totime="+yearFuture+"-"+monthFuture+"-"+dayFuture+"T00%3A00"+"&datatype="+this.config.datatype+"&refcode=cd&place=&file=&lang=en&interval=10&dst=0&tzone=1&tide_request=locationdata";
 
