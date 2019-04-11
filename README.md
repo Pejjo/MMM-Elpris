@@ -30,8 +30,8 @@ Add the module to your modules array in your `config.js`.
 			config: {
 				refreshInterval: 5 * 60 * 1000, // every 5 minutes
 				daysSpan:1,
-				lat:60.260283,
-				lon:5.321504,
+				lat:60.260000,
+				lon:5.320000,
 				datatype:"tab", //all, obs, pre, tab
 			}
 		},
