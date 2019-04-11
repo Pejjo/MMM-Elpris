@@ -4,7 +4,7 @@ This is a module for [Magic Mirror²](https://github.com/MichMich/MagicMirror) t
 
 The module can be configured to show several days and a spesific location.
 
-The module uses XML data format from Kartverket in Norway. The URL has to be updated based on airport name.
+The module uses XML data format from Kartverket in Norway.
 Please see [Kartverket](http://api.sehavniva.no/tideapi_no.html) for details.
 
 ## Installation
