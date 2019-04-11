@@ -17,9 +17,6 @@ Module.register("MMM-Flo",{
 		//updateInterval: 5 * 60 * 1000, // every 5 minutes
 		animationSpeed: 1000,
 		refreshInterval: 5 * 60 * 1000, // every 5 minutes
-		tableLength: 14,
-		minTimeDiff:0,
-		timeZone: 1,
 		daysSpan:2,
 		lat:60.260283,
 		lon:5.321504,
