@@ -1,0 +1,51 @@
+/*
+ *
+ * MMM-Flo
+ *
+ * 
+ * MIT Licensed.
+ *
+ * Custom here your css module
+ *
+ */
+.MMM-Elpris .icon {
+    height: auto; 
+    width: auto; 
+    max-width: 150px; 
+    padding: 0px 0px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.MMM-Elpris .tag {
+    height: auto; 
+    width: auto; 
+    max-width: 20px; 
+    padding: 0px 0px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.MMM-Elpris .Mytable {
+    text-align: center;
+    border: 1px;
+    width: 100%;
+    color:rgb(211, 211, 211);
+}
+
+.MMM-Elpris .Mytr {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.MMM-Elpris .Mytd {
+    padding: 0 6px;
+}
+
+.MMM-Elpris .Myth {
+    border-bottom:1px solid white;
+    padding: 0 6px;
+    color: rgb(255, 255, 255);
+}
+
+

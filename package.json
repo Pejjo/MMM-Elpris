@@ -1,0 +1,19 @@
+{
+  "name": "MMM-Elpris",
+  "version": "1.0.0",
+  "description": "Additional Module for MagicMirror², to display elpris within Sweden.",
+  "main": "MMM-Elpris.js",
+  "scripts": {
+    "test": "./node_modules/grunt/bin/grunt"
+  },
+  "author": "Per J",
+  "license": "MIT",
+  "devDependencies": {
+    "stylelint-config-standard": "latest",
+    "time-grunt": "latest"
+  },
+  "dependencies": {
+    "request": "^2.88.2",
+    "ripemd160": "latest"
+  }
+}
