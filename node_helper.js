@@ -7,6 +7,7 @@
 
 const NodeHelper = require("node_helper");
 var request = require("request");
+var RIPEMD160 = require('ripemd160');
 
 module.exports = NodeHelper.create({
 
@@ -18,41 +19,34 @@ module.exports = NodeHelper.create({
 	},
 
 	getData: function() {
-		var self = this;
+                var self = this;
 
-		var dateNowAndTime = new Date();
-		var dateNow = dateNowAndTime.toISOString().split("T")[0];
-		var yearNow = dateNow.split("-")[0];
-		var monthNow = dateNow.split("-")[1];
-		var dayNow = dateNow.split("-")[2];
+                action="now";
+                currency=this.config.currency;
+                area=this.config.area;
+                seed=Date.now();
+                key=new RIPEMD160().update(seed + action + area).digest('hex')
 
-		// add a day
-		dateNowAndTime.setDate(dateNowAndTime.getDate() + Number(this.config.daysSpan));
+                //console.log("NEW DATE LOADED:"+dateNow);
+                var myUrl = this.config.url +"?action=" + action + "&currency=" + currency + "&area=" + area + "&seed=" + seed + "&key=" + key;
+//                console.log(myUrl);
 
-		var dateFuture = dateNowAndTime.toISOString().split("T")[0];
-		var yearFuture = dateFuture.split("-")[0];
-		var monthFuture = dateFuture.split("-")[1];
-		var dayFuture = dateFuture.split("-")[2];
-
-		//console.log("NEW DATE LOADED:"+dateNow);
-		var myUrl = "http://api.sehavniva.no/tideapi.php?lat="+this.config.lat+"&lon="+this.config.lon+"&fromtime="+yearNow+"-"+monthNow+"-"+dayNow+"T00%3A00"+
-		"&totime="+yearFuture+"-"+monthFuture+"-"+dayFuture+"T00%3A00"+"&datatype="+this.config.datatype+"&refcode=cd&place=&file=&lang=en&interval=10&dst=0&tzone=1&tide_request=locationdata";
-
-		//return new Promise(function (resolve, reject) {
-		request({
-			url: myUrl,
-			method: "GET",
-			headers: {
-				"User-Agent": "MagicMirror/1.0 ",
-				"Accept-Language": "en_US",
-		        "Content-Type": "application/json",
-		    },
-		}, function (error, response, body) {
-			if (!error && response.statusCode == 200) {
-				self.sendSocketNotification("DATA", body);
-			}
-		});
-		setTimeout(function() { self.getData(); }, this.config.refreshInterval);
+                //return new Promise(function (resolve, reject) {
+                request({
+                        url: myUrl,
+                        method: "GET",
+                        headers: {
+                                "User-Agent": "MagicMirror/1.0 ",
+                                "Accept-Language": "en_US",
+                        "Content-Type": "application/json",
+                    },
+                }, function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                                self.sendSocketNotification("DATA", JSON.parse(body));
+//                                console.log(JSON.parse(body));
+                        }
+                });
+                setTimeout(function() { self.getData(); }, this.config.refreshInterval);
 	},
 
 	socketNotificationReceived: function(notification, payload) {
