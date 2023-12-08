@@ -20,6 +20,7 @@ Module.register("MMM-Elpris",{
 		daysSpan:2,
 		lat:60.260000,
 		lon:5.320000,
+		short:false,
 		datatype:"tab", //all, obs, pre, tab
 		//httpRequestURL:"http://api.sehavniva.no/tideapi.php?lat="+this.config.lat+"&lon="+this.config.lon+"&fromtime=2019-04-10T00%3A00"+
 		//"&totime=2019-04-11T00%3A00&datatype="+this.config.datatype+"&refcode=cd&place=&file=&lang=en&interval=10&dst=0&tzone=1&tide_request=locationdata",
@@ -95,10 +96,12 @@ Module.register("MMM-Elpris",{
 
 		var row = tableWrapper.insertRow(-1);
 
-		var headerCell = document.createElement("th");
-		headerCell.className = "Myth";
-		headerCell.innerHTML = "Elomr.";
-		row.appendChild(headerCell);
+		if (this.config.short==false) {
+			var headerCell = document.createElement("th");
+			headerCell.className = "Myth";
+			headerCell.innerHTML = "Elomr.";
+			row.appendChild(headerCell);
+		}
 
 		var headerCell = document.createElement("th");
 		headerCell.className = "Myth";
@@ -122,10 +125,11 @@ Module.register("MMM-Elpris",{
 				var eventWrapper = document.createElement("tr");
 				eventWrapper.className = "Mytr";
 
-				var lineWrapper = document.createElement("td");
-				lineWrapper.className = "Mytd";
-				lineWrapper.innerHTML = prisValue[i].area;
-
+				if (this.config.short==false) {
+					var lineWrapper = document.createElement("td");
+					lineWrapper.className = "Mytd";
+					lineWrapper.innerHTML = prisValue[i].area;
+				}
 				var timeWrapper = document.createElement("td");
 				timeWrapper.className = "Mytd";
 				var dateAndTime = prisValue[i].time;
@@ -138,7 +142,11 @@ Module.register("MMM-Elpris",{
 //				var timeZone = klokken.split("+")[1];
 //				var timeZoneHour = timeZone.split(":")[0];
 //				var hourNo=String(Number(timeZoneHour)+Number(hourZ));
-				timeWrapper.innerHTML = hourZ+" - " + (parseInt(hourZ)+1);
+				if (this.config.short==false) {
+					timeWrapper.innerHTML = hourZ+" - " + (parseInt(hourZ)+1);
+				} else {
+					timeWrapper.innerHTML = hourZ;
+				}
 
 				var highWrapper = document.createElement("td");
 				highWrapper.className = "Mytd";
@@ -146,8 +154,9 @@ Module.register("MMM-Elpris",{
                                 highWrapper.className = "Mytd";
                                 var floatPrice=prisValue[i].price/10.0;
 				highWrapper.innerHTML = floatPrice.round(3);
-
-				eventWrapper.appendChild(lineWrapper);
+				if (this.config.short==false) {
+					eventWrapper.appendChild(lineWrapper);
+				}
 				eventWrapper.appendChild(timeWrapper);
 				eventWrapper.appendChild(highWrapper);
 				tableWrapper.appendChild(eventWrapper);
